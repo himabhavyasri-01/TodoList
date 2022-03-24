@@ -1,25 +1,42 @@
 import logo from './logo.svg';
 import './App.css';
+import {Component} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className='bg-container'>
+
+        <div className='todo-container'>
+        
+          <h1 className='heading'>Enter the task todo</h1>
+          <div className='input-container'>
+            <input placeholder='Enter todo item'></input><br></br>
+            <button className='btn btn-success mt-3'>Add</button>
+          </div>
+
+          <div className='todo-list'>
+            <h1 className='heading'>Todo Tasks</h1>
+            <div className='todo-item'>
+              <p className='todo-name'>Learn HTML</p>
+              <button className='delete-button'>Delete</button>
+            </div>
+
+            <div className='todo-item'>
+              <p className='todo-name'>Learn HTML</p>
+              <button className='delete-button'>Delete</button>
+            </div>
+            <div className='todo-item'>
+              <p className='todo-name'>Learn HTML</p>
+              <button className='delete-button'>Delete</button>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;
