@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DisplayTodo from './components/DisplayTodo'
 
 let initialtodoList = [
   {
@@ -18,22 +19,23 @@ let initialtodoList = [
   }
 ]
 
-const Display = (props) => {
-  const {text} = props;
-  console.log({text});
-  return (
-    <div className='todo-item'>
-      <p className='todo-name'>{text}</p>
-      <button className='delete-button'>Delete</button>
-    </div>
-
-  )
-}
-
 class App extends Component {
+
   state = {
     todoList: initialtodoList,
   } 
+
+  deleteTodo = uniqueId => {
+    const {todoList} = this.state;
+    const filteredData = todoList.filter(
+      each => each.uniqueId !== uniqueId
+    )
+    console.log(filteredData);
+    this.setState({
+      todoList: filteredData
+    })
+    console.log({todoList});
+  }
 
   displaytodoList = (props) => {
     const {todoList} = props;
@@ -64,15 +66,17 @@ class App extends Component {
           </div>
 
             <h1 className='heading'>Todo Tasks</h1>
+
             {todoList.map(eachItem => (
-            <Display
-              text = {eachItem.name}
+            <DisplayTodo
+              details = {eachItem} 
+              key = {eachItem.uniqueId}
+              deleteTodo = {this.deleteTodo}
             />
           ))}
           </div>
         
         </div>
-      
     )
   }
 }
