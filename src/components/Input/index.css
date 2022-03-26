@@ -1,0 +1,15 @@
+.input-container {
+    padding-left: 30px;
+    border-bottom: 1px;
+    padding-top: 10px;
+}
+
+.add-button {
+    margin-top: 15px;
+    height: 35px;
+    width: 90px;
+    background-color: green;
+    border-width: 0px;
+    border-radius: 10px;
+    color: white;
+}

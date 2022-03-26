@@ -1,47 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 import {Component} from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import DisplayTodo from './components/DisplayTodo'
-
-let initialtodoList = [
-  {
-    uniqueId: 1,
-    name: "Learn HTML"
-  },
-  {
-    uniqueId: 2,
-    name: "Learn CSS"
-  },
-  {
-    uniqueId: 3,
-    name: "Learn Bootstrap"
-  }
-]
+import Input from './components/Input'
 
 class App extends Component {
 
-  state = {
-    todoList: initialtodoList,
-  } 
+  constructor(props) {
+    super(props);
+    this.state = {todoList: [{uniqueId: 1, name: "Learn HTML"}]}
+  }
 
   deleteTodo = uniqueId => {
     const {todoList} = this.state;
     const filteredData = todoList.filter(
       each => each.uniqueId !== uniqueId
     )
-    console.log(filteredData);
     this.setState({
       todoList: filteredData
     })
-    console.log({todoList});
   }
-
-  displaytodoList = (props) => {
-    const {todoList} = props;
-    console.log({todoList});
-  }
-
 
   addTodo = () => {
     let {todoList} = this.state;
@@ -49,7 +27,6 @@ class App extends Component {
     this.setState(prevState => ({
       todoList: [...prevState.todoList, {uniqueId: todoList.length + 1, name: text}]
     }))
-    this.displaytodoList({todoList});
   }
 
   render() {
@@ -60,20 +37,21 @@ class App extends Component {
         <div className='todo-container'>
         
           <h1 className='heading'>Enter the task todo</h1>
-          <div className='input-container'>
-            <input placeholder='Enter todo item' id='input-value'></input><br></br>
-            <button className='btn btn-success mt-3' onClick={this.addTodo}>Add</button>
-          </div>
+          
+          <Input handleTodo={this.addTodo}/>
 
             <h1 className='heading'>Todo Tasks</h1>
 
             {todoList.map(eachItem => (
+
             <DisplayTodo
               details = {eachItem} 
               key = {eachItem.uniqueId}
               deleteTodo = {this.deleteTodo}
             />
+
           ))}
+
           </div>
         
         </div>

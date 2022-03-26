@@ -4,7 +4,7 @@
 }
 
 .todo-name {
-    text-align: center;
+    align-self: center;
     padding-left: 10px;
     font-weight: bold;
 }

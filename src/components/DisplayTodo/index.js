@@ -1,19 +1,21 @@
 import './index.css'
+import { Component } from 'react';
 
-const DisplayTodo = (props) => {
-    const {details, deleteTodo} = props;
-    const {uniqueId, name} = details;
+class DisplayTodo extends Component {
+  
+  onDeleteTodo = () => {
+    this.props.deleteTodo(this.props.details.uniqueId);
+  }
 
-    const onDeleteTodo = () => {
-      deleteTodo(uniqueId);
-    }
-
+  render() {
     return (
       <div className='todo-item'>
-        <p className='todo-name'>{name}</p>
-        <button className='delete-button' onClick={onDeleteTodo}>Delete</button>
+        <p className='todo-name'>{this.props.details.name}</p>
+        <button className='delete-button' onClick={this.onDeleteTodo}>Delete</button>
       </div>
     )
+  }
+  
 }
 
-  export default DisplayTodo;
+export default DisplayTodo;
