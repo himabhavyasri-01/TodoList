@@ -15,11 +15,6 @@
   border-radius: 10px;
   padding-bottom: 20px;
 }
-.input-container {
-  padding-left: 30px;
-  border-bottom: 1px;
-  padding-top: 10px;
-}
 
 .heading {
   padding-top: 30px;
@@ -31,39 +26,6 @@ input {
   border-radius: 5px;
   border-width: 1px;
   border-color: black;
-}
-
-.add-button {
-  margin-top: 10px;
-  height: 30px;
-  width: 90px;
-  background-color: rgb(20, 150, 201);
-  border-width: 0px;
-  border-radius: 10px;
-}
-
-
-.todo-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 35px;
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-  width: 350px;
-  margin-left: 30px;
-  margin-bottom: 30px;
-  border-radius: 5px;
-}
-
-.delete-button {
-  background-color: red;
-  border-width: 0px;
-}
-
-.todo-name {
-  text-align: center;
   padding-left: 10px;
-  font-weight: bold;
 }
+
