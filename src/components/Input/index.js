@@ -3,15 +3,15 @@ import './index.css'
 
 class Input extends Component {
 
-    click = () => {
-        this.props.handleTodo();
+    constructor(props) {
+        super(props);
     }
 
     render() {
         return (
             <div className='input-container'>
                 <input placeholder='Enter todo item' id='input-value'></input><br></br>
-                <button className='add-button' onClick={this.click}>Add</button>
+                <button className='add-button' onClick={this.props.handleTodo}>Add</button>
             </div>
         )
     }

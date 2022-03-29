@@ -8,25 +8,34 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {todoList: [{uniqueId: 1, name: "Learn HTML"}]}
+    this.state = {todoList: [{uniqueId: 1, name: "Learn HTML"}]};
+    this.deleteTodo = this.deleteTodo.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
-  deleteTodo = uniqueId => {
+  deleteTodo(event) {
     const {todoList} = this.state;
     const filteredData = todoList.filter(
-      each => each.uniqueId !== uniqueId
+      each => each.uniqueId !== (parseInt(event.target.value))
     )
     this.setState({
       todoList: filteredData
     })
   }
 
-  addTodo = () => {
+  addTodo() {
     let {todoList} = this.state;
     let text = document.getElementById("input-value").value;
-    this.setState(prevState => ({
-      todoList: [...prevState.todoList, {uniqueId: todoList.length + 1, name: text}]
-    }))
+
+    if(text === "") {
+      alert("Enter a value")
+    }
+
+    else {
+      this.setState(prevState => ({
+        todoList: [...prevState.todoList, {uniqueId: todoList.length + 1, name: text}]
+      }))
+    }
   }
 
   render() {
@@ -40,21 +49,19 @@ class App extends Component {
           
           <Input handleTodo={this.addTodo}/>
 
-            <h1 className='heading'>Todo Tasks</h1>
+          <h1 className='heading'>Todo Tasks</h1>
 
-            {todoList.map(eachItem => (
-
+          {todoList.map(eachItem => (
             <DisplayTodo
               details = {eachItem} 
               key = {eachItem.uniqueId}
               deleteTodo = {this.deleteTodo}
             />
-
           ))}
 
-          </div>
-        
         </div>
+        
+      </div>
     )
   }
 }
